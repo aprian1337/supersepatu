@@ -1,3 +1,12 @@
+## Our Team
+<p>1. Dwiky Aprian Ashari (2018-019)</p>
+<p>2. Alfiora Salmadiella (2018-020)</p>
+<p>3. Mohammad Andrie Prasetyo (2018-022)</p>
+<p>4. Febiutoyo Alifsyahwin (2018-028)</p>
+<p>5. Dwi Widianto (2018-032)</p>
+<br>
+----------------------------------------------------------
+<br>
 <p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
 
 <p align="center">
