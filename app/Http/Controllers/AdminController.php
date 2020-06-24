@@ -25,9 +25,20 @@ class AdminController extends Controller
         $konfirmasi = DB::table('konfirmasi')
         ->join('transaksi', 'konfirmasi.id_transaksi', '=', 'transaksi.id')
         ->join('barang', 'transaksi.id_barang', '=', 'barang.id')
-        ->select('konfirmasi.id', 'transaksi.nama_pembeli', 'barang.merk', 'barang.tipe', 'transaksi.ukuran_pembeli', 'transaksi.nohp_pembeli', 'transaksi.norek_pembeli', 'transaksi.bank_pembeli', 'barang.harga', 'konfirmasi.src')
+        ->select('konfirmasi.id', 'konfirmasi.id_transaksi', 'transaksi.nama_pembeli', 'barang.merk', 'barang.tipe', 'transaksi.ukuran_pembeli', 'transaksi.nohp_pembeli', 'transaksi.norek_pembeli', 'transaksi.bank_pembeli', 'barang.harga', 'konfirmasi.src')
         ->get();
         return view('admin.konfirmasi', compact('konfirmasi'));
+    }
+
+    public function konfirmasiProcess($id){
+        $idTransaksi = \App\Konfirmasi::where('id', $id)
+        ->first();
+        \App\Transaksi::where('id', $idTransaksi->id)
+        ->update([
+            'status' => 'Sudah bayar'
+        ]);
+        \App\Konfirmasi::find($id)->delete();
+        return redirect()->back()->with('success', 'Berhasil konfirmasi pembayaran');
     }
 }
 

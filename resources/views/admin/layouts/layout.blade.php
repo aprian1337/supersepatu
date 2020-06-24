@@ -257,8 +257,8 @@
 
                                 <li class="@yield('konfirmasiActive')">
                                     <a href="{{route('konfirmasi')}}">
-                                        <span class="pcoded-micon"><i class="feather icon-user-check"></i></span>
-                                        <span class="pcoded-mtext">Konfirmasi</span>
+                                        <span class="pcoded-micon"><i class="feather icon-check-circle"></i></span>
+                                        <span class="pcoded-mtext">Konfirmasi Pembayaran</span>
                                     </a>
                                 </li>
 

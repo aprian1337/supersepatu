@@ -1,6 +1,6 @@
 @extends('admin.layouts.layout')
 @section('title')
-Konfirmasi
+Konfirmasi Pembayaran
 @endsection
 @section('konfirmasiActive')
 active
@@ -64,9 +64,10 @@ active
                     </tr>
                 </thead>
                 <tbody>
+                    <?php $no=1; ?>
                     @foreach($konfirmasi as $data)
                     <tr>
-                        <td>{{$data->id}}</td>
+                        <td>{{$no++}}</td>
                         <td>{{$data->nama_pembeli}}</td>
                         <td>{{$data->merk}} - {{$data->tipe}} // Ukuran : {{$data->ukuran_pembeli}}</td>
                         <td>{{$data->norek_pembeli}} - {{$data->bank_pembeli}}</td>
@@ -74,10 +75,11 @@ active
                         <td><a href="{{URL::asset('img/konfirmasi/'.$data->src)}}" target="_blank">Lihat bukti
                                 pembayaran</a></td>
                         <td>
-                            <button type="button" class="btn btn-primary edit" data-toggle="modal"
-                                data-target="#exampleModal">
-                                Konfirmasi Pembayaran
-                            </button>
+                            <form action="{{route('confirmed', $data->id)}}" method="POST">
+                                @csrf
+                                <button type="submit" class="btn btn-primary">Konfirmasi Pembayaran</button>
+                            </form>
+
                         </td>
                     </tr>
                     @endforeach
@@ -97,31 +99,6 @@ active
     </div>
 </div>
 
-
-<!-- Modal -->
-<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Konfirmasi data pembayaran</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                Apakah anda yakin untuk konfirmasi pembayaran tersebut?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
-                <form action="{{route('confirmed')}}" id="editForm">
-                    @csrf
-                    <button type="button" class="btn btn-primary">Ya, konfirmasi pembayaran</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
 
 <!-- Deferred rendering for speed table end -->
 @endsection

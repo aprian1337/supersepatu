@@ -13,8 +13,8 @@ active
                                 <div class="card-block">
                                     <div class="row align-items-center">
                                         <div class="col">
-                                            <p class="m-b-5">New Customer</p>
-                                            <h4 class="m-b-0">852</h4>
+                                            <p class="m-b-5">Total Transaksi</p>
+                                            <h4 class="m-b-0">{{\App\Transaksi::count()}}</h4>
                                         </div>
                                         <div class="col col-auto text-right">
                                             <i class="feather icon-user f-50 text-c-yellow"></i>
@@ -28,8 +28,8 @@ active
                                 <div class="card-block">
                                     <div class="row align-items-center">
                                         <div class="col">
-                                            <p class="m-b-5">Income</p>
-                                            <h4 class="m-b-0">$5,852</h4>
+                                            <p class="m-b-5">Transaksi Berhasil</p>
+                                            <h4 class="m-b-0">{{\App\Transaksi::where('status', 'Sudah bayar')->count()}}</h4>
                                         </div>
                                         <div class="col col-auto text-right">
                                             <i class="feather icon-credit-card f-50 text-c-green"></i>
@@ -43,8 +43,8 @@ active
                                 <div class="card-block">
                                     <div class="row align-items-center">
                                         <div class="col">
-                                            <p class="m-b-5">Ticket</p>
-                                            <h4 class="m-b-0">42</h4>
+                                            <p class="m-b-5">Total Barang</p>
+                                            <h4 class="m-b-0">{{\App\Barang::count()}}</h4>
                                         </div>
                                         <div class="col col-auto text-right">
                                             <i class="feather icon-book f-50 text-c-pink"></i>
@@ -58,8 +58,8 @@ active
                                 <div class="card-block">
                                     <div class="row align-items-center">
                                         <div class="col">
-                                            <p class="m-b-5">Orders</p>
-                                            <h4 class="m-b-0">$5,242</h4>
+                                            <p class="m-b-5">Total Barang [Published]</p>
+                                            <h4 class="m-b-0">{{\App\Barang::where('published', 'Yes')->count()}}</h4>
                                         </div>
                                         <div class="col col-auto text-right">
                                             <i class="feather icon-shopping-cart f-50 text-c-blue"></i>

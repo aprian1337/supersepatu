@@ -38,7 +38,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/admin/dashboard', 'AdminController@dashboard')->name('dashboard');
     Route::get('/admin/transaksi', 'AdminController@transaksi')->name('transaksi');
     Route::get('/admin/konfirmasi', 'AdminController@konfirmasi')->name('konfirmasi');
-    Route::post('/admin/konfirmasi', 'AdminController@konfirmasiProcess')->name('confirmed');
+    Route::post('/admin/konfirmasi/{id}', 'AdminController@konfirmasiProcess')->name('confirmed');
     Route::resource('admin/barang', 'BarangController');
 
 });
