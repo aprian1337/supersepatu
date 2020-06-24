@@ -1,8 +1,8 @@
 @extends('admin.layouts.layout')
 @section('title')
-Transaksi
+Konfirmasi
 @endsection
-@section('transaksiActive')
+@section('konfirmasiActive')
 active
 @endsection
 @section('head')
@@ -44,58 +44,85 @@ active
 
 <div class="card">
     <div class="card-header">
-        <h5>Manajemen Data Transaksi</h5>
-        <span>Data transaksi ini digunakan untuk menampilkan semua transaksi baik yang sudah dibayar maupun belum.</span>
+        <h5>Manajemen Data Konfirmasi</h5>
+        <span>Data konfirmasi ini digunakan untuk menampilkan semua data yang telah melakukan konfirmasi.</span>
 
     </div>
 
     <div class="card-block">
         <div class="dt-responsive table-responsive">
-            <table id="order-table" class="table table-striped table-bordered nowrap">
+            <table id="order-table" class="table table-striped table-bordered nowrap myTable">
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>ID Barang</th>
                         <th>Nama Pembeli</th>
-                        <th>Ukuran</th>
-                        <th>No. HP</th>
-                        <th>Alamat</th>
-                        <th>Bank</th>
-                        <th>No. Rek</th>
-                        <th>Status</th>
+                        <th>Barang Yang Dibeli</th>
+                        <th>No. Rekening</th>
+                        <th>Total Bayar</th>
+                        <th>Bukti Pembayaran</th>
+                        <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($transaksi as $data)
+                    @foreach($konfirmasi as $data)
                     <tr>
                         <td>{{$data->id}}</td>
-                        <td>{{$data->id_barang}}</td>
                         <td>{{$data->nama_pembeli}}</td>
-                        <td>{{$data->ukuran_pembeli}}</td>
-                        <td>{{$data->nohp_pembeli}}</td>
-                        <td>{{$data->alamat_pembeli}}</td>
-                        <td>{{$data->bank_pembeli}}</td>
-                        <td>{{$data->norek_pembeli}}</td>
-                        <td>{{$data->status}}</td>
+                        <td>{{$data->merk}} - {{$data->tipe}} // Ukuran : {{$data->ukuran_pembeli}}</td>
+                        <td>{{$data->norek_pembeli}} - {{$data->bank_pembeli}}</td>
+                        <td>{{$data->harga}}</td>
+                        <td><a href="{{URL::asset('img/konfirmasi/'.$data->src)}}" target="_blank">Lihat bukti
+                                pembayaran</a></td>
+                        <td>
+                            <button type="button" class="btn btn-primary edit" data-toggle="modal"
+                                data-target="#exampleModal">
+                                Konfirmasi Pembayaran
+                            </button>
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>
                 <tfoot>
                     <tr>
                         <th>#</th>
-                        <th>ID Barang</th>
                         <th>Nama Pembeli</th>
-                        <th>Ukuran</th>
-                        <th>No. HP</th>
-                        <th>Alamat</th>
-                        <th>Bank</th>
-                        <th>No. Rek</th>
-                        <th>Status</th>
+                        <th>Barang Yang Dibeli</th>
+                        <th>No. Rekening</th>
+                        <th>Total Bayar</th>
+                        <th>Bukti Pembayaran</th>
                     </tr>
                 </tfoot>
             </table>
         </div>
     </div>
 </div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Konfirmasi data pembayaran</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Apakah anda yakin untuk konfirmasi pembayaran tersebut?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
+                <form action="{{route('confirmed')}}" id="editForm">
+                    @csrf
+                    <button type="button" class="btn btn-primary">Ya, konfirmasi pembayaran</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Deferred rendering for speed table end -->
 @endsection
+

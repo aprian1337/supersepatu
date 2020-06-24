@@ -17,7 +17,7 @@
 			<form action="{{route('processLogin')}}" method="POST">
                 @csrf
 				<img src="img/avatar.svg">
-				<h2 class="title">Login User</h2>
+				<h2 class="title">Login Admin</h2>
            		<div class="input-div one">
            		   <div class="i">
            		   		<i class="fas fa-user"></i>
@@ -36,7 +36,7 @@
            		    	<input type="password" class="input" name="password">
             	   </div>
             	</div>
-            	<a href="#">Forgot Password?</a>
+
             	<input type="submit" class="btn" value="Login">
             </form>
         </div>
